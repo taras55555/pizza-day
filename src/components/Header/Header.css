@@ -9,3 +9,9 @@
     background-color: rgb(234, 179, 8);
     padding: 15px 20px;
 }
+
+@media only screen and (max-width: 377px) {
+    .header {
+        flex-direction: column;
+    }
+}
