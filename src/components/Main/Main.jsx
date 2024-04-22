@@ -1,5 +1,7 @@
 import './Main.css';
+import Form from '../Form/Form';
 import Input from '../Input/Input';
+import Button from '../Button/Button';
 
 function Title() {
     return <h1 className='title'>
@@ -7,23 +9,32 @@ function Title() {
     </h1>
 }
 
-const SubTitle = () =>
-    <p className='sub-title'>
+function SubTitle() {
+    return <p className='sub-title'>
         👋 Welcome! Please start by telling us your name:
     </p>
+}
 
-const LoginForm = () =>
-    <form className='login-form'>
-        <Input type='text' placeholder='Your full name' />
-        <button>Login</button>
-    </form>
 
 function Main() {
+    const { formAttributes, formElements } = {
+        formAttributes: { className: 'login-form' },
+        formElements: [
+            <Input type='text' placeholder='Your full name' />,
+            <Button text='Login' />
+        ]
+    }
+
+
     return (
         <main className='content'>
             <Title />
             <SubTitle />
-            <LoginForm />
+            <Form
+                attributes={formAttributes}
+                elements={formElements}
+            />
+
         </main>
     );
 }

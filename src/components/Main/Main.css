@@ -16,13 +16,6 @@
     margin-bottom: 30px;
 }
 
-.login-form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
 @media only screen and (max-width: 377px) {
     .content * {
         display: flex;
