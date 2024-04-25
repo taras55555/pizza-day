@@ -36,13 +36,13 @@ function MenuList() {
             {pizzasList.map((pizza) => {
                 const { id, imageUrl, ingredients, name, soldOut, unitPrice } = pizza;
 
-                let imgClass = 'pizza__image';
-                if (soldOut) imgClass += ' pizza__image__soldout';
+                let imgClass = 'pizza-image';
+                if (soldOut) imgClass += ' pizza-image-soldout';
 
                 function PizzaActions() {
                     return (
                         <>
-                            <p className='pizza__price'>
+                            <p className='pizza-price'>
                                 {soldOut ? `SOLD OUT` : `€${unitPrice.toFixed(2)}`}
                             </p>
 
@@ -61,10 +61,10 @@ function MenuList() {
                         alt={name}
                         className={imgClass}
                     />
-                    <div className='pizza__info'>
-                        <p className='pizza__name'>{name}</p>
-                        <p className='pizza__ingredients'>{ingredients.join(', ')}</p>
-                        <div className='pizza__actions'>
+                    <div className='pizza-info'>
+                        <p className='pizza-name'>{name}</p>
+                        <p className='pizza-ingredients'>{ingredients.join(', ')}</p>
+                        <div className='pizza-actions'>
                             <PizzaActions />
                         </div>
                     </div>

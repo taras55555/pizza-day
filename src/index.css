@@ -1,29 +1,28 @@
-/* #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-} */
+:root {
+  --text-color: #44403c;
+  --primary-color: #eab308;
+  --input-border-color: #e7e5e4;
+  --pizza-bottom-order-color: #d3d3d3;
+  --pizz-price-color: #808080;
+}
 
 body {
   position: relative;
   font-family: Roboto Mono, monospace;
   font-size: 16px;
   line-height: 1.2;
-  color: rgb(68, 64, 60);
+  color: var(--text-color);
 }
 
 .logo {
   text-decoration: none;
   font-size: 20px;
-  color: rgb(68, 64, 60);
+  color: var(--text-color);
 }
 
 .wrapper {
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
   min-height: 100vh;
-  /* padding: 15px; */
 }

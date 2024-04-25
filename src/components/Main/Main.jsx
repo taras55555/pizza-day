@@ -1,5 +1,5 @@
 import './Main.css';
-import Form from '../Form/Form';
+import LoginForm from '../Form/LoginForm';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 
@@ -17,24 +17,11 @@ function SubTitle() {
 
 
 function Main() {
-    const { formAttributes, formElements } = {
-        formAttributes: { className: 'login-form' },
-        formElements: [
-            <Input type='text' placeholder='Your full name' />,
-            <Button text='Login' />
-        ]
-    }
-
-
     return (
         <main className='content'>
             <Title />
             <SubTitle />
-            <Form
-                attributes={formAttributes}
-                elements={formElements}
-            />
-
+            <LoginForm />
         </main>
     );
 }

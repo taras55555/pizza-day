@@ -1,21 +1,11 @@
 import './Header.css';
-import Input from "../Input/Input";
-import Form from "../Form/Form";
-
-const { formAttributes, formElements } = {
-    formAttributes: [],
-    formElements: [
-        <Input type="text" placeholder="Search for the order #" />
-    ]
-}
+import FromSearchOrder from '../Form/FromSearchOrder';
 
 const Header = () =>
     <header className="header">
         <a className='logo' href="/" >Pizza Day</a>
-        <Form
-            attributes={formAttributes}
-            elements={formElements}
-        />
+        <FromSearchOrder />
+        <div>TARAS</div>
     </header>
 
 export default Header;

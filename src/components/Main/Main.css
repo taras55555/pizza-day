@@ -9,7 +9,7 @@
 }
 
 .text-yellow {
-    color: rgb(234 179 8);
+    color: var(--primary-color);
 }
 
 .sub-title {
