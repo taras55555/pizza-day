@@ -9,7 +9,7 @@ function App() {
 
       <Header />
 
-      <Main />
+      {/* <Main /> */}
 
       <Menu />
     </div>
