@@ -1,6 +1,7 @@
 import classNames from 'classnames';
+import Button from './Button';
 
-function MenuItem({ parameters }) {
+function MenuItem({ parameters, onAddToCart, calculateCountInCart, onDeleteFromCart }) {
 
     const { id, imageUrl, ingredients, name, soldOut, unitPrice } = parameters;
 
@@ -9,7 +10,36 @@ function MenuItem({ parameters }) {
         'pizza-image-soldout': soldOut,
     });
 
-    const printData = () => console.log({ id, imageUrl, ingredients, name, soldOut, unitPrice });
+    const addToCard = () => onAddToCart(id);
+    const deleteFromCardAllPositions = () => onDeleteFromCart(id, true);
+    const deleteFromCardById = () => onDeleteFromCart(id);
+
+    function CalculatedPizzaInCart() {
+        return (
+            <div className='quantity-controls'>
+                <div className='quantity-buttons-block'>
+                    <Button
+                        onClick={deleteFromCardById}
+                        className='menu-button quantity-buttons'
+                        text='-'
+                    />
+                    <span className='item-count'>{calculateCountInCart}</span>
+                    <Button
+                        onClick={addToCard}
+                        className='menu-button quantity-buttons'
+                        text='+'
+                    />
+                </div>
+                <div className='quantity-buttons-block'>
+                    <Button
+                        onClick={deleteFromCardAllPositions}
+                        className='menu-button'
+                        text='DELETE'
+                    />
+                </div>
+            </div>
+        );
+    }
 
     return (
         <li key={id} className='pizza'>
@@ -26,11 +56,19 @@ function MenuItem({ parameters }) {
                         {soldOut ? `SOLD OUT` : `€${unitPrice.toFixed(2)}`}
                     </p>
 
-                    {!soldOut &&
-                        <button className='menu-button' onClick={printData}>
-                            ADD TO CART
-                        </button>
-                    }
+                    {(() => {
+                        if (!soldOut) {
+                            return (calculateCountInCart === 0
+                                ? <Button
+                                    onClick={addToCard}
+                                    className='menu-button'
+                                    text='ADD TO CART'
+                                />
+                                : <CalculatedPizzaInCart />)
+                        }
+                        return null
+                    })()}
+
                 </div>
             </div>
         </li>)

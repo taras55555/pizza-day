@@ -1,7 +1,7 @@
 button {
     font-family: Roboto Mono, monospace;
     border: 0;
-    padding: 10px 15px;
+    padding: 2px 10px;
     background-color: var(--primary-color);
     font-size: 16px;
     border-radius: 4px;
