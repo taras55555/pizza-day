@@ -1,44 +1,47 @@
+import { useState } from 'react';
 import classNames from 'classnames';
 import Button from './Button';
 
-function MenuItem({ parameters, onAddToCart, calculateCountInCart, onDeleteFromCart }) {
-
+function MenuItem({ parameters }) {
     const { id, imageUrl, ingredients, name, soldOut, unitPrice } = parameters;
 
+    const [counter, setCounter] = useState(0);
+    const incrementPizza = () => setCounter(counter + 1);
+    const decrementPizza = () => setCounter(counter - 1);
+    
+    
     const imgClass = classNames({
         'pizza-image': true,
         'pizza-image-soldout': soldOut,
     });
 
-    const addToCard = () => onAddToCart(id);
-    const deleteFromCardAllPositions = () => onDeleteFromCart(id, true);
-    const deleteFromCardById = () => onDeleteFromCart(id);
-
-    function CalculatedPizzaInCart() {
+    function PizzaCounter() {
         return (
-            <div className='quantity-controls'>
-                <div className='quantity-buttons-block'>
-                    <Button
-                        onClick={deleteFromCardById}
-                        className='menu-button quantity-buttons'
-                        text='-'
-                    />
-                    <span className='item-count'>{calculateCountInCart}</span>
-                    <Button
-                        onClick={addToCard}
-                        className='menu-button quantity-buttons'
-                        text='+'
-                    />
+            counter === 0
+                ? <Button className='menu-button' text='ADD TO CART' onClick={incrementPizza} />
+                : <div className='quantity-controls'>
+                    <div className='quantity-buttons-block'>
+                        <Button
+                            onClick={decrementPizza}
+                            className='menu-button quantity-buttons'
+                            text='-'
+                        />
+                        <span className='item-count'>{counter}</span>
+                        <Button
+                            onClick={incrementPizza}
+                            className='menu-button quantity-buttons'
+                            text='+'
+                        />
+                    </div>
+                    <div className='quantity-buttons-block'>
+                        <Button
+                            onClick={() => setCounter(0)}
+                            className='menu-button'
+                            text='DELETE'
+                        />
+                    </div>
                 </div>
-                <div className='quantity-buttons-block'>
-                    <Button
-                        onClick={deleteFromCardAllPositions}
-                        className='menu-button'
-                        text='DELETE'
-                    />
-                </div>
-            </div>
-        );
+        )
     }
 
     return (
@@ -55,20 +58,7 @@ function MenuItem({ parameters, onAddToCart, calculateCountInCart, onDeleteFromC
                     <p className='pizza-price'>
                         {soldOut ? `SOLD OUT` : `€${unitPrice.toFixed(2)}`}
                     </p>
-
-                    {(() => {
-                        if (!soldOut) {
-                            return (calculateCountInCart === 0
-                                ? <Button
-                                    onClick={addToCard}
-                                    className='menu-button'
-                                    text='ADD TO CART'
-                                />
-                                : <CalculatedPizzaInCart />)
-                        }
-                        return null
-                    })()}
-
+                    {!soldOut && <PizzaCounter />}
                 </div>
             </div>
         </li>)
