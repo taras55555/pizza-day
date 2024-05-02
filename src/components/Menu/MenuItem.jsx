@@ -8,41 +8,12 @@ function MenuItem({ parameters }) {
     const [counter, setCounter] = useState(0);
     const incrementPizza = () => setCounter(counter + 1);
     const decrementPizza = () => setCounter(counter - 1);
-    
-    
+
+
     const imgClass = classNames({
         'pizza-image': true,
         'pizza-image-soldout': soldOut,
     });
-
-    function PizzaCounter() {
-        return (
-            counter === 0
-                ? <Button className='menu-button' text='ADD TO CART' onClick={incrementPizza} />
-                : <div className='quantity-controls'>
-                    <div className='quantity-buttons-block'>
-                        <Button
-                            onClick={decrementPizza}
-                            className='menu-button quantity-buttons'
-                            text='-'
-                        />
-                        <span className='item-count'>{counter}</span>
-                        <Button
-                            onClick={incrementPizza}
-                            className='menu-button quantity-buttons'
-                            text='+'
-                        />
-                    </div>
-                    <div className='quantity-buttons-block'>
-                        <Button
-                            onClick={() => setCounter(0)}
-                            className='menu-button'
-                            text='DELETE'
-                        />
-                    </div>
-                </div>
-        )
-    }
 
     return (
         <li key={id} className='pizza'>
@@ -58,7 +29,32 @@ function MenuItem({ parameters }) {
                     <p className='pizza-price'>
                         {soldOut ? `SOLD OUT` : `€${unitPrice.toFixed(2)}`}
                     </p>
-                    {!soldOut && <PizzaCounter />}
+
+                    {!soldOut && (counter === 0
+                        ? (<Button className='menu-button' text='ADD TO CART' onClick={incrementPizza} />)
+                        : (<div className='quantity-controls'>
+                            <div className='quantity-buttons-block'>
+                                <Button
+                                    onClick={decrementPizza}
+                                    className='menu-button quantity-buttons'
+                                    text='-'
+                                />
+                                <span className='item-count'>{counter}</span>
+                                <Button
+                                    onClick={incrementPizza}
+                                    className='menu-button quantity-buttons'
+                                    text='+'
+                                />
+                            </div>
+                            <div className='quantity-buttons-block'>
+                                <Button
+                                    onClick={() => setCounter(0)}
+                                    className='menu-button'
+                                    text='DELETE'
+                                />
+                            </div>
+                        </div>)
+                    )}
                 </div>
             </div>
         </li>)

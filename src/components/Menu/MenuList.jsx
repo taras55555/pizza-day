@@ -1,8 +1,7 @@
-import pizzas from './data.js';
 import MenuItem from './MenuItem';
 
-function MenuList() {
-    const menuItems = pizzas.map((pizza) =>
+function MenuList({ pizzasList }) {
+    const menuItems = pizzasList.map((pizza) =>
         <MenuItem
             key={pizza.id}
             parameters={pizza}
