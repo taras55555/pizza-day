@@ -1,7 +1,5 @@
-import './Main.css';
+import './Auth.css';
 import LoginForm from '../Form/LoginForm';
-import Input from '../Input/Input';
-import Button from '../Button/Button';
 
 function Title() {
     return <h1 className='title'>
@@ -14,7 +12,6 @@ function SubTitle() {
         👋 Welcome! Please start by telling us your name:
     </p>
 }
-
 
 function Main() {
     return (

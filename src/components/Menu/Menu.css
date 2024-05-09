@@ -47,17 +47,6 @@ main {
   color: var(--pizz-price-color);
 }
 
-.menu-button {
-  font-weight: 800;
-  border-radius: 10px;
-  padding: 8px 20px;
-  outline: 2px solid var(--active-border-color);
-}
-
-.menu-button:active {
-  outline-offset: -4px;
-}
-
 .quantity-controls {
   display: flex;
   justify-content: space-between;
