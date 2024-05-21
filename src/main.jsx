@@ -8,6 +8,7 @@ import Auth from './components/Auth/Auth';
 import Menu from './components/Menu/Menu';
 import ErrorPage from "./error-page";
 import './index.css';
+import UserNameContext from './contexts/UserName.jsx';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <UserNameContext>
+      <RouterProvider router={router} />
+    </UserNameContext>
   </React.StrictMode>,
 )

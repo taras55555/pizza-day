@@ -4,7 +4,7 @@ import './Form.css';
 import { UserNameContext } from '../../contexts/UserName';
 
 function LoginForm() {
-    const { setFullName } = useContext(UserNameContext);
+    const { setUserName } = useContext(UserNameContext);
 
     const [nameState, setNameState] = useState('')
     const navigate = useNavigate();
@@ -12,7 +12,7 @@ function LoginForm() {
     const handleLogin = (e) => {
         e.preventDefault();
         nameState.trim().split(' ').length > 1
-            ? (setFullName(nameState), navigate('/pizza-day/menu', { state: { fullName: nameState } }))
+            ? (setUserName(nameState), navigate('/pizza-day/menu', { state: { fullName: nameState } }))
             : (alert(`Please enter a valid full name`));
     }
 

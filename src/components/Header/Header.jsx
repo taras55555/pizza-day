@@ -5,15 +5,15 @@ import { Link } from 'react-router-dom';
 import { UserNameContext } from '../../contexts/UserName';
 
 const Header = () => {
-    const { FullName } = useContext(UserNameContext);
+    const { userName } = useContext(UserNameContext);
     return (
         <header className="header">
             <Link className='logo' href="/" >Pizza Day</Link>
             <FromSearchOrder />
             <nav className='nav-bar'>
                 <Link to={`menu`} className='nav-bar-button'>MENU</Link>
-                {FullName
-                    ? (<div className='nav-bar-button'>{FullName}</div>)
+                {userName
+                    ? (<div className='nav-bar-button'>{userName}</div>)
                     : (<Link to={`auth`} className='nav-bar-button'>LOGIN</Link>)}
             </nav>
         </header >
