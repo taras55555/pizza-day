@@ -1,19 +1,19 @@
+import { useContext } from 'react';
 import './Header.css';
 import FromSearchOrder from '../Form/FromSearchOrder';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { UserNameContext } from '../../contexts/UserName';
 
 const Header = () => {
-    const location = useLocation();
-    const fullName = location.state?.fullName;
-
+    const { FullName } = useContext(UserNameContext);
     return (
         <header className="header">
-            <a className='logo' href="/" >Pizza Day</a>
+            <Link className='logo' href="/" >Pizza Day</Link>
             <FromSearchOrder />
             <nav className='nav-bar'>
                 <Link to={`menu`} className='nav-bar-button'>MENU</Link>
-                {fullName
-                    ? (<div className='nav-bar-button'>{fullName}</div>)
+                {FullName
+                    ? (<div className='nav-bar-button'>{FullName}</div>)
                     : (<Link to={`auth`} className='nav-bar-button'>LOGIN</Link>)}
             </nav>
         </header >
