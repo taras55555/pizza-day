@@ -11,9 +11,12 @@ function LoginForm() {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        nameState.trim().split(' ').length > 1
-            ? (setUserName(nameState), navigate('/pizza-day/menu', { state: { fullName: nameState } }))
-            : (alert(`Please enter a valid full name`));
+        if (nameState.trim().split(' ').length > 1) {
+            setUserName(nameState);
+            navigate('/pizza-day/menu');
+        } else {
+            alert(`Please enter a valid full name`)
+        }
     }
 
     return (
