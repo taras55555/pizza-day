@@ -15,11 +15,13 @@ function SubTitle() {
 
 function Main() {
     return (
-        <main className='content'>
-            <Title />
-            <SubTitle />
-            <LoginForm />
-        </main>
+        <div className="centered-element">
+            <main className='content'>
+                <Title />
+                <SubTitle />
+                <LoginForm />
+            </main>
+        </div>
     );
 }
 

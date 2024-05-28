@@ -6,6 +6,7 @@ import Root from './routes/root.jsx';
 import Home from './components/Home/Home';
 import Auth from './components/Auth/Auth';
 import Menu from './components/Menu/Menu';
+import LandingPage from './components/LandingPage/LandingPage.jsx';
 import ErrorPage from "./error-page";
 import './index.css';
 import UserNameContext from './contexts/UserName.jsx';
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/pizza-day/auth",
         element: <Auth />,
+      },
+      {
+        path: "/pizza-day/order/new",
+        element: <LandingPage />,
       },
     ],
   },

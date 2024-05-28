@@ -1,0 +1,41 @@
+.form-style {
+    box-sizing: border-box;
+    margin: auto;
+    max-width: 600px;
+    width: 90%;
+}
+
+input {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.input-block {
+    align-items: center;
+    column-gap: 10px;
+    display: grid;
+    grid-template-columns: 0.7fr 2fr;
+}
+
+.required-item {
+    grid-column: 2;
+    height: 38px;
+    text-align: center;
+    color: var(--required-color);
+}
+
+.priority-block {
+    display: grid;
+    gap: 5px;
+    grid-template-columns: 0.7fr 0.1fr 1.9fr;
+    padding-bottom: 22px;
+}
+
+.priority-input {
+    grid-column: 2;
+    margin: auto;
+}
+
+.title {
+    text-align: center;
+}
