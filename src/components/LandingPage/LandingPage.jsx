@@ -21,7 +21,7 @@ const schema = yup.object().shape({
     phone: yup
         .string()
         .required('Phone number is required')
-        .matches(/^[0-9+\s]{10,20}$/g, 'errr'),
+        .matches(/^[0-9+\s]{10,20}$/g, 'A valid phone number is required.'),
 
     address: yup
         .string()
