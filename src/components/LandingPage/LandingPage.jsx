@@ -1,8 +1,10 @@
 import React from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import './LandingPage.css';
+import { Input, Checkbox } from "./Input";
+
 
 const schema = yup.object().shape({
     firstName: yup
@@ -34,7 +36,13 @@ const schema = yup.object().shape({
 });
 
 const LandingPage = () => {
-    const { register, handleSubmit, formState: { errors }, reset } = useForm({
+    const { control, handleSubmit, formState: { errors }, reset } = useForm({
+        defaultValues: {
+            firstName: '',
+            phone: '',
+            address: '',
+            priority: false,
+        },
         resolver: yupResolver(schema),
     });
 
@@ -54,7 +62,11 @@ const LandingPage = () => {
                         <label htmlFor="firstName">First Name</label>
                     </div>
                     <div className="input-item">
-                        <input {...register("firstName")} type="text" id="firstName" />
+                        <Controller
+                            control={control}
+                            name="firstName"
+                            render={({ field }) => <Input {...field} inputRef={field.ref} />}
+                        />
                     </div>
                     <div className="required-item">
                         <span>{errors.firstName?.message}</span>
@@ -66,7 +78,11 @@ const LandingPage = () => {
                         <label htmlFor="phone">Phone number</label>
                     </div>
                     <div className="input-item">
-                        <input {...register("phone")} type="tel" id="phone" />
+                        <Controller
+                            control={control}
+                            name="phone"
+                            render={({ field }) => <Input {...field} inputRef={field.ref} type='tel' />}
+                        />
                     </div>
                     <div className="required-item">
                         <span>{errors.phone?.message}</span>
@@ -78,7 +94,11 @@ const LandingPage = () => {
                         <label htmlFor="address">Address</label>
                     </div>
                     <div className="input-item">
-                        <input {...register("address")} type="text" id="address" />
+                        <Controller
+                            control={control}
+                            name="address"
+                            render={({ field }) => <Input {...field} inputRef={field.ref} />}
+                        />
                     </div>
                     <div className="required-item">
                         <span>{errors.address?.message}</span>
@@ -87,13 +107,16 @@ const LandingPage = () => {
 
                 <div className="priority-block">
                     <div className="priority-input">
-                        <input {...register("priority")} type="checkbox" id="priority" />
+                        <Controller
+                            control={control}
+                            name="priority"
+                            render={({ field }) => <Checkbox {...field} inputRef={field.ref} />}
+                        />
                     </div>
                     <div>
                         <label htmlFor="priority">Want to give your order priority?</label>
                     </div>
                 </div>
-
                 <button type="submit">ORDER NOW FOR</button>
 
             </form>

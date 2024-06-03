@@ -38,7 +38,8 @@ button,
   outline: 2px solid var(--active-border-color);
 }
 
-button:active {
+button:active,
+.button-link:active {
   outline-offset: -4px;
 }
 
